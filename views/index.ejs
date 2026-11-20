@@ -3,13 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <%= title %>
-    </title>
+    <title></title>
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <h1><%= title %></h1>
-    Hello EJS!
+    <h1>Foglaasok szama: <%=szam %> </h1>
+    
+    <form method="post">
+        <label>
+            Nev: <br>
+            <input type="text" name="name" value="<%=adatok.name%>">
+        </label>
+        <br>
+        <label>
+            Email cim: <br>
+            <input type="text" name="email" value="<%=adatok.email%>">
+        </label>
+        <br>
+        <label>
+            Kezdeti datum: <br>
+            <input type="datetime-local" name="startDate" value="<%=adatok.startDate%>">
+        </label>
+        <br>
+        <label>
+            Vendegek szama(maximum 10): <br>
+            <input type="number" name="guests" value="<%=adatok.guests%>">
+        </label>
+        <br>
+        <button type="submit">Elkuldes</button>
+    </form>
+
+    <% if(success){ %>
+        <% errors.forEach(error => { %>
+           <p style="color: green;"><%= error %> </p> 
+        <% }); %> 
+    <% } else{ %>
+        <% errors.forEach(error => { %>
+           <p style="color: red;"><%= error %> </p> 
+        <% }); %> 
+    <% }%> 
 </body>
 </html>
